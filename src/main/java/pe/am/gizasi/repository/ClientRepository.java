@@ -6,5 +6,4 @@ import pe.am.gizasi.model.Client;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Integer> {
-    // Puedes definir métodos adicionales para consultas específicas si es necesario
 }
