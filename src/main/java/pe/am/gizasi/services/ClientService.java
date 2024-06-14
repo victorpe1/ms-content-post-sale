@@ -17,8 +17,11 @@ public class ClientService {
         this.clientRepository = clientRepository;
     }
 
-    public List<Client> obtenerTodosLosClientes() {
-        List<Client> Lista=clientRepository.findAll();
-        return Lista;
+    public List<Client> getAllClients() {
+        List<Client> clientes = clientRepository.findAll();
+        if (clientes.isEmpty()) {
+            throw new RuntimeException("No hay clientes disponibles");
+        }
+        return clientes;
     }
 }
