@@ -31,7 +31,7 @@ public class ConfigSecurity {
             .authorizeHttpRequests(authRequest ->
               authRequest
                 .requestMatchers("/auth/**").permitAll()
-                      .requestMatchers("/api/**").permitAll()
+                .requestMatchers("/api/**").permitAll()
                 .anyRequest().authenticated()
                 )
             .sessionManagement(sessionManager->
