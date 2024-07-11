@@ -4,18 +4,14 @@ package pe.am.gizasi.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pe.am.gizasi.model.UserModel;
-import pe.am.gizasi.repository.UsersRepository;
 import pe.am.gizasi.services.UserService;
 
 import java.util.Base64;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")

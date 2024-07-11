@@ -9,7 +9,7 @@ import jakarta.persistence.Table;
 @Table(name="clientes")
 public class Client {
     @Id
-    @Column(name="id_Cliente")
+    @Column(name="id_cliente")
     private Integer idCliente;
     private String nombre;
     private String representante;
@@ -46,24 +46,27 @@ public class Client {
     private String telefono2;
     private String telefono3;
     private String telefono4;
+    @Column(name="codubigeo")
     private String codUbigeo;
     private String email1;
     private String email2;
     private String email3;
     private String email4;
+    @Column(name="codubigeo1")
     private String codUbigeo1;
+    @Column(name="codubigeo2")
     private String codUbigeo2;
+    @Column(name="codubigeo3")
     private String codUbigeo3;
+    @Column(name="codubigeo4")
     private String codUbigeo4;
     private String nacionalidad;
     @Column(name="carnet_extranjeria")
     private String carnetExtranjeria;
 
-    // Constructor vacío
     public Client() {
     }
 
-    // Getters y Setters
     public Integer getIdCliente() {
         return idCliente;
     }

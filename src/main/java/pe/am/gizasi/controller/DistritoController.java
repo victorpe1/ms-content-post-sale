@@ -28,10 +28,10 @@ public class DistritoController {
     public ResponseEntity<Response<List<Distrito>>> listarDistritos() {
         try {
             List<Distrito> distritos = distritoService.getAllDistritos();
-            return ResponseEntity.ok(new Response<>("success", "Lista de clientes obtenida con éxito", distritos, HttpStatus.OK.value()));
+            return ResponseEntity.ok(new Response<>("success", "Lista de distritos obtenida con éxito", distritos, HttpStatus.OK.value()));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(new Response<>("fail", "Error al obtener la lista de clientes", null, HttpStatus.INTERNAL_SERVER_ERROR.value()));
+                    .body(new Response<>("fail", "Error al obtener la lista de distritos", null, HttpStatus.INTERNAL_SERVER_ERROR.value()));
         }
     }
 
