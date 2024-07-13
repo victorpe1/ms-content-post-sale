@@ -14,48 +14,28 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_producto;
-
     private String nombre;
-
     private Integer facuni;
-
     private Integer id_medida;
-
     private short id_unidad;
-
     private char moneda;
-
     private Integer kardex;
-
     private Integer series;
-
     private Float stockmin;
-
     private Float stockmax;
-
     private char prevtaigv;
-
     private BigDecimal preciovtamen;
-
     private BigDecimal preciovtamay;
-
     private Character mone_cost;
-
     private BigDecimal costo;
-
     private BigDecimal peso;
-
     private String codigo;
-
     private String unidad;
-
     private Integer id_marca;
 
-    // Constructor por defecto
     public Product() {
     }
 
-    // Getters y Setters
     public int getId_producto() {
         return id_producto;
     }

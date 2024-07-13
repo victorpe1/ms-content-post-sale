@@ -12,18 +12,13 @@ public class Tcambio {
 
     @Id
     private LocalDateTime fecha;
-
     private BigDecimal libre;
-
     private BigDecimal compra;
-
     private BigDecimal venta;
 
-    // Constructor por defecto
     public Tcambio() {
     }
 
-    // Getters y Setters
     public LocalDateTime getFecha() {
         return fecha;
     }
@@ -55,6 +50,5 @@ public class Tcambio {
     public void setVenta(BigDecimal venta) {
         this.venta = venta;
     }
-
 }
 

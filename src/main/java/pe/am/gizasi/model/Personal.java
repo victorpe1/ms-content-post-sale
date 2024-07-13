@@ -14,46 +14,27 @@ public class Personal {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_personal;
-
     private String nombre;
-
     private String domicilio;
-
     private Integer id_distrito;
-
     private String telefonos;
-
     private String dni;
-
     private String ruc;
-
     private BigDecimal pcomision;
-
     private Short id_ocupacion;
-
     private LocalDateTime fechanac;
-
     private int sexo;
-
     private Character estadocivil;
-
     private LocalDateTime fechainsc;
-
     private LocalDateTime fechacese;
-
     private int activo;
-
     private String abrev;
-
     private Character lugarcomi;
-
     private String lic_conducir;
 
-    // Constructor por defecto
     public Personal() {
     }
 
-    // Getters y Setters
     public int getId_personal() {
         return id_personal;
     }

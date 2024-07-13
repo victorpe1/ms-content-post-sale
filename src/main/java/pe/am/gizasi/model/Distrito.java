@@ -13,20 +13,14 @@ public class Distrito {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_distrito;
-
     private String nombre;
-
     private Integer id_provincia;
-
     private Integer cont_distsunat;
-
     private String codubigeo;
 
-    // Constructor por defecto
     public Distrito() {
     }
 
-    // Getters y Setters
     public int getId_distrito() {
         return id_distrito;
     }

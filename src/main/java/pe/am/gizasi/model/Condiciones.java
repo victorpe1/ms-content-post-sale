@@ -13,18 +13,13 @@ public class Condiciones {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_condicion;
-
     private String nombre;
-
     private Integer dias;
-
     private String tipo;
 
-    // Constructor por defecto
     public Condiciones() {
     }
 
-    // Getters y Setters
     public int getId_condicion() {
         return id_condicion;
     }
