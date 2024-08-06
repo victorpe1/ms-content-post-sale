@@ -26,13 +26,14 @@ public class OrderService {
 
   public String saveOrderPedido(OrderRequest ordenPedido) {
 
-    LocalTime now = LocalTime.now();
+    /*LocalTime now = LocalTime.now();
     LocalTime start = LocalTime.of(5, 0); // 5AM
     LocalTime end = LocalTime.of(19, 0); // 7PM
 
     if (now.isBefore(start) || now.isAfter(end)) {
       throw new OrderRequestTimeException("La solicitud no puede ser atendida fuera del horario permitido (5AM a 7PM).");
     }
+    */
 
     String maxIdNumero = orderRepository.findMaxIdNumero();
     String newIdNumero = generateNewIdNumero(maxIdNumero);
