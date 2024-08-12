@@ -31,10 +31,9 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws ServletException, IOException {
-
 		String authorizationHeader = request.getHeader("Authorization");
-		if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
 
+		if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
 			String base64Credentials = authorizationHeader.substring("Bearer".length()).trim();
 			String credentials = new String(Base64.getDecoder().decode(base64Credentials));
 
@@ -44,9 +43,7 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
 
 			UserModel userDetails = userService.verificarCredenciales(username, password);
 
-			// Verificar la contraseña (esto debe hacerse usando un password encoder en producción)
 			if (userDetails != null) {
-
 				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
 						userDetails, null,
 						Collections.singleton(new SimpleGrantedAuthority("ROLE_ADM"))
@@ -56,7 +53,6 @@ public class CustomAuthenticationFilter extends OncePerRequestFilter {
 				SecurityContextHolder.getContext().setAuthentication(authentication);
 			}
 		}
-
 		chain.doFilter(request, response);
 	}
 }

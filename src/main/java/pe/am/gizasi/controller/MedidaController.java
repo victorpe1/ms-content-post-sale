@@ -7,37 +7,40 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pe.am.gizasi.model.Marca;
+import pe.am.gizasi.model.Medida;
 import pe.am.gizasi.model.Response;
-import pe.am.gizasi.services.MarcaService;
+import pe.am.gizasi.services.MedidaService;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/marca")
-public class MarcaController {
+@RequestMapping("/api/medidas")
+public class MedidaController {
 
-  private final MarcaService marcaService;
+  private final MedidaService medidaService;
 
   @Autowired
-  public MarcaController(MarcaService marcaService) {
-    this.marcaService = marcaService;
+  public MedidaController(MedidaService medidaService) {
+    this.medidaService = medidaService;
   }
 
   @GetMapping
-  public ResponseEntity<Response<List<Marca>>> listarMarcas() {
+  public ResponseEntity<Response<List<Medida>>> listarMedidas() {
     try {
-      List<Marca> marcaList = marcaService.getAllMarcas();
-      return ResponseEntity.ok(new Response<>("success", "Lista de marcas obtenida con éxito", marcaList, HttpStatus.OK.value()));
+      List<Medida> medidaList = medidaService.getAllMedidas();
+      return ResponseEntity.ok(new Response<>("success", "Lista de medida obtenida con éxito",
+          medidaList, HttpStatus.OK.value()));
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .body(new Response<>("fail", "Error al obtener la lista de marcas", null, HttpStatus.INTERNAL_SERVER_ERROR.value()));
+          .body(new Response<>("fail", "Error al obtener la lista de medidas",
+              null, HttpStatus.INTERNAL_SERVER_ERROR.value()));
     }
   }
 
   @ExceptionHandler(Exception.class)
   public ResponseEntity<Response<String>> handleException(Exception e) {
     return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-        .body(new Response<>("fail", "Ocurrió un error: " + e.getMessage(), null, HttpStatus.INTERNAL_SERVER_ERROR.value()));
+        .body(new Response<>("fail", "Ocurrió un error: " + e.getMessage(),
+            null, HttpStatus.INTERNAL_SERVER_ERROR.value()));
   }
 }
