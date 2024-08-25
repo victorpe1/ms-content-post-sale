@@ -3,6 +3,7 @@ package pe.am.gizasi.model;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "ordped")
@@ -110,6 +111,50 @@ public class OrdenPedido {
 
   @Column(name = "id_coordinador")
   private Integer idCoordinador;
+
+  @Column(name = "obs")
+  private String observacion;
+
+  @Column(name = "total_opgratuito")
+  private BigDecimal total_opgratuito;
+
+  @Column(name = "total_opexonerado")
+  private BigDecimal total_opexonerado;
+
+  @Transient
+  private List<OrdenPedidoDetalle> ordenPedidoDetalleList;
+
+  public List<OrdenPedidoDetalle> getOrdenPedidoDetalleList() {
+    return ordenPedidoDetalleList;
+  }
+
+  public void setOrdenPedidoDetalleList(List<OrdenPedidoDetalle> ordenPedidoDetalleList) {
+    this.ordenPedidoDetalleList = ordenPedidoDetalleList;
+  }
+
+  public BigDecimal getTotal_opexonerado() {
+    return total_opexonerado;
+  }
+
+  public void setTotal_opexonerado(BigDecimal total_opexonerado) {
+    this.total_opexonerado = total_opexonerado;
+  }
+
+  public BigDecimal getTotal_opgratuito() {
+    return total_opgratuito;
+  }
+
+  public void setTotal_opgratuito(BigDecimal total_opgratuito) {
+    this.total_opgratuito = total_opgratuito;
+  }
+
+  public String getObservacion() {
+    return observacion;
+  }
+
+  public void setObservacion(String observacion) {
+    this.observacion = observacion;
+  }
 
   public String getIdNumero() {
     return idNumero;

@@ -63,6 +63,51 @@ public class OrdenPedidoDetalle {
   @Column(name = "id_medida")
   private Integer idMedida;
 
+  @Column(name = "tipotributo")
+  private String tipotributo;
+
+  @Column(name = "bonificacion")
+  private String bonificacion;
+
+  @Column(name = "precunitgrat")
+  private BigDecimal precunitgrat;
+
+  @Column(name = "montograt")
+  private BigDecimal montograt;
+
+
+  public String getTipotributo() {
+    return tipotributo;
+  }
+
+  public void setTipotributo(String tipotributo) {
+    this.tipotributo = tipotributo;
+  }
+
+  public String getBonificacion() {
+    return bonificacion;
+  }
+
+  public void setBonificacion(String bonificacion) {
+    this.bonificacion = bonificacion;
+  }
+
+  public BigDecimal getPrecunitgrat() {
+    return precunitgrat;
+  }
+
+  public void setPrecunitgrat(BigDecimal precunitgrat) {
+    this.precunitgrat = precunitgrat;
+  }
+
+  public BigDecimal getMontograt() {
+    return montograt;
+  }
+
+  public void setMontograt(BigDecimal montograt) {
+    this.montograt = montograt;
+  }
+
   public String getIdNumero() {
     return idNumero;
   }
