@@ -23,7 +23,35 @@ public class OrderRequest {
   private String estado;                  // generas
   private int idDistrito;                 // front
   private String codUbigeo;               // preguntar
+  private String observacion;
+  private BigDecimal totalOpgratuito;
+  private BigDecimal totalOpExonerado;
+
   private List<OrderDetalle> orderDetalle; // front
+
+  public BigDecimal getTotalOpExonerado() {
+    return totalOpExonerado;
+  }
+
+  public void setTotalOpExonerado(BigDecimal totalOpExonerado) {
+    this.totalOpExonerado = totalOpExonerado;
+  }
+
+  public BigDecimal getTotalOpgratuito() {
+    return totalOpgratuito;
+  }
+
+  public void setTotalOpgratuito(BigDecimal totalOpgratuito) {
+    this.totalOpgratuito = totalOpgratuito;
+  }
+
+  public String getObservacion() {
+    return observacion;
+  }
+
+  public void setObservacion(String observacion) {
+    this.observacion = observacion;
+  }
 
   public String getIdNumero() {
     return idNumero;

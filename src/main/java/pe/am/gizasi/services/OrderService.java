@@ -11,10 +11,9 @@ import pe.am.gizasi.model.OrdenPedidoDetalle;
 import pe.am.gizasi.repository.OrderDetailRepository;
 import pe.am.gizasi.repository.OrderRepository;
 import pe.am.gizasi.util.DateUtil;
-import pe.am.gizasi.util.OrderRequestTimeException;
 
-import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class OrderService {
@@ -40,6 +39,7 @@ public class OrderService {
 
     OrdenPedido orderPedido = new OrdenPedido();
     orderPedido.setIdNumero(newIdNumero);
+    orderPedido.setIdNumAlt(newIdNumero);
     orderPedido.setFecha(new Date()); // Fecha actual como fecha de creación
     orderPedido.setFechaDeVenc(DateUtil.parseStringToDate(ordenPedido.getFechaDeVenc())); //arreglar error
     orderPedido.setFechaDeEntrega(DateUtil.parseStringToDate(ordenPedido.getFechaDeEntrega()));
@@ -58,6 +58,10 @@ public class OrderService {
     orderPedido.setEstado(ordenPedido.getEstado());
     orderPedido.setIdDistrito(ordenPedido.getIdDistrito());
     orderPedido.setCodUbigeo(ordenPedido.getCodUbigeo());
+    orderPedido.setObservacion(ordenPedido.getObservacion());
+
+    orderPedido.setTotal_opexonerado(ordenPedido.getTotalOpExonerado());
+    orderPedido.setTotal_opgratuito(ordenPedido.getTotalOpgratuito());
 
     orderRepository.save(orderPedido);
 
@@ -67,19 +71,37 @@ public class OrderService {
       ordenPedidoDetalle.setIdProducto(orderDetalle.getIdProducto());
       ordenPedidoDetalle.setMoneda(orderDetalle.getMoneda());
       ordenPedidoDetalle.setTipoDeCambio(orderDetalle.getTipoDeCambio());
-      ordenPedidoDetalle.setPrecioUnit(orderDetalle.getPrecioUnit());
-      ordenPedidoDetalle.setCantidad(orderDetalle.getCantidad());
-      ordenPedidoDetalle.setMonto(orderDetalle.getMonto());
+      ordenPedidoDetalle.setCantidad(orderDetalle.getPeso());
       ordenPedidoDetalle.setPrecioUnitAlTipCam(orderDetalle.getPrecioUnitAlTipCam());
       ordenPedidoDetalle.setMontoAlTipCam(orderDetalle.getMonto()); //genero
       ordenPedidoDetalle.setIdMedida(orderDetalle.getIdMedida());
-      ordenPedidoDetalle.setCantidad2(orderDetalle.getPeso());
+      ordenPedidoDetalle.setCantidad2(orderDetalle.getCantidad());
+      ordenPedidoDetalle.setPrecioUnit(orderDetalle.getPrecioUnit());
+      ordenPedidoDetalle.setMonto(orderDetalle.getMonto());
+
+      ordenPedidoDetalle.setTipotributo(orderDetalle.getTipotributo());
+      ordenPedidoDetalle.setBonificacion(orderDetalle.getTipotributo().equalsIgnoreCase("3") ? "S" : "N");
+      ordenPedidoDetalle.setTipotributo(orderDetalle.getTipotributo());
+      ordenPedidoDetalle.setPrecunitgrat(orderDetalle.getPrecunitgrat());
+      ordenPedidoDetalle.setMontograt(orderDetalle.getMontograt());
 
       orderDetailRepository.save(ordenPedidoDetalle);
     }
 
     return newIdNumero;
   }
+
+  public List<OrdenPedido> getPedidosByFecha(String fecha) {
+
+    List<OrdenPedido> personals = orderRepository.findByFecha(fecha);
+
+    for(OrdenPedido personal: personals){
+      List<OrdenPedidoDetalle> ordenPedidoDetalleList = orderDetailRepository.findByIdNumero(personal.getIdNumero());
+      personal.setOrdenPedidoDetalleList(ordenPedidoDetalleList);
+    }
+    return personals;
+  }
+
 
   private String generateNewIdNumero(String currentMaxIdNumero) {
     if (currentMaxIdNumero == null) {

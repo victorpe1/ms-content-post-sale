@@ -1,5 +1,7 @@
 package pe.am.gizasi.dto;
 
+import jakarta.persistence.Column;
+
 import java.math.BigDecimal;
 
 public class OrderDetalle {
@@ -13,7 +15,42 @@ public class OrderDetalle {
   private BigDecimal monto;
   private BigDecimal precioUnitAlTipCam;
   private int idMedida;
+  private String tipotributo;
+  private String bonificacion;
+  private BigDecimal precunitgrat;
+  private BigDecimal montograt;
 
+  public String getTipotributo() {
+    return tipotributo;
+  }
+
+  public void setTipotributo(String tipotributo) {
+    this.tipotributo = tipotributo;
+  }
+
+  public String getBonificacion() {
+    return bonificacion;
+  }
+
+  public void setBonificacion(String bonificacion) {
+    this.bonificacion = bonificacion;
+  }
+
+  public BigDecimal getPrecunitgrat() {
+    return precunitgrat;
+  }
+
+  public void setPrecunitgrat(BigDecimal precunitgrat) {
+    this.precunitgrat = precunitgrat;
+  }
+
+  public BigDecimal getMontograt() {
+    return montograt;
+  }
+
+  public void setMontograt(BigDecimal montograt) {
+    this.montograt = montograt;
+  }
 
   public BigDecimal getPeso() {
     return peso;

@@ -33,6 +33,16 @@ public class Product {
     private String unidad;
     private Integer id_marca;
 
+    private String tipotributo;
+
+    public String getTipotributo() {
+        return tipotributo;
+    }
+
+    public void setTipotributo(String tipotributo) {
+        this.tipotributo = tipotributo;
+    }
+
     public Product() {
     }
 
